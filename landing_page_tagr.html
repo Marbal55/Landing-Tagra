@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagrá - Próximamente</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        tagra: {
+                            teal: '#144d56',
+                            orange: '#f76b07',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-tagra-teal min-h-screen text-white flex flex-col items-center justify-center p-4 selection:bg-tagra-orange selection:text-white relative">
+
+    <!-- Luces decorativas sutiles de fondo -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-tagra-orange/10 blur-[100px]"></div>
+        <div class="absolute bottom-[0%] -right-[10%] w-[60%] h-[60%] rounded-full bg-[#1b6b78]/30 blur-[100px]"></div>
+    </div>
+
+    <main class="w-full max-w-lg mx-auto text-center z-10 animate-fade-in py-8">
+        
+        <!-- Logo estilo App Icon -->
+        <div class="mb-8 flex justify-center animate-slide-up" style="opacity: 0; animation-delay: 0.1s;">
+            <div class="bg-white rounded-3xl p-3 shadow-xl shadow-black/20">
+                <img src="Logotipo Tagrá con bolsa dinámica.png" alt="Logo Tagrá" class="h-20 w-20 md:h-24 md:w-24 object-contain rounded-xl">
+            </div>
+        </div>
+
+        <!-- Headline principal -->
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 animate-slide-up" style="opacity: 0; animation-delay: 0.2s;">
+            Lo ves.<br>
+            Te gusta.<br>
+            <span class="text-tagra-orange drop-shadow-md">Es tuyo.</span>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="text-base md:text-lg text-gray-200 mb-8 px-2 animate-slide-up" style="opacity: 0; animation-delay: 0.3s;">
+            Nuestra tienda está en preparación. Dinos qué buscas y te avisaremos.
+        </p>
+
+        <!-- Contenedor Glassmorphism -->
+        <div id="form-container" class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl animate-slide-up mx-2" style="opacity: 0; animation-delay: 0.4s;">
+            <!-- El action apunta a tu Formspree y método POST -->
+            <form id="form-tagra" action="https://formspree.io/f/mdeeoqje" method="POST" class="flex flex-col gap-4">
+                
+                <!-- Input de Producto -->
+                <div class="text-left">
+                    <label for="producto" class="block text-sm font-semibold text-gray-100 ml-1 mb-1">¿Qué producto te interesa?</label>
+                    <input type="text" id="producto" name="producto" placeholder="Ej: Zapatillas, Auriculares, Reloj..." required
+                           class="w-full px-4 py-3 rounded-xl bg-black/20 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-tagra-orange transition-all">
+                </div>
+                
+                <!-- Input de Email -->
+                <div class="text-left">
+                    <label for="email" class="block text-sm font-semibold text-gray-100 ml-1 mb-1">Tu correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="hola@correo.com" required
+                           class="w-full px-4 py-3 rounded-xl bg-black/20 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-tagra-orange transition-all">
+                </div>
+
+                <!-- Botón de Envío -->
+                <button type="submit" id="submit-btn"
+                        class="mt-2 w-full font-bold text-lg px-6 py-4 rounded-xl bg-tagra-orange hover:bg-[#e05f00] text-white shadow-lg shadow-tagra-orange/40 transition-all transform hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-4 focus:ring-tagra-orange/50 flex justify-center items-center gap-2">
+                    <span id="btn-text">Avísame</span>
+                    <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+
+                <!-- Mensaje de error (oculto por defecto) -->
+                <p id="error-message" class="hidden text-red-300 text-sm mt-2 text-center font-medium bg-red-900/30 py-2 rounded-lg border border-red-500/30">
+                    Hubo un problema enviando tu solicitud. Por favor, inténtalo de nuevo.
+                </p>
+            </form>
+        </div>
+
+        <!-- Mensaje de Éxito (Oculto por defecto) -->
+        <div id="success-message" class="hidden bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 shadow-2xl mx-2 mt-4 animate-fade-in">
+            <div class="bg-tagra-orange/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-tagra-orange/50">
+                <svg class="w-8 h-8 text-tagra-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">¡Gracias!</h3>
+            <p class="text-gray-200 text-lg leading-relaxed">
+                Hemos guardado tu petición. Te avisaremos en cuanto la tienda esté activa y tengamos tu producto.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Script de procesamiento AJAX para Formspree -->
+    <script>
+        document.getElementById('form-tagra').addEventListener('submit', async function(event) {
+            // Evitar que la página recargue (comportamiento por defecto)
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnIcon = document.getElementById('btn-icon');
+            const errorMsg = document.getElementById('error-message');
+            
+            const originalText = btnText.innerText;
+            
+            // Estado de "Enviando..."
+            btnText.innerText = "Enviando...";
+            btnIcon.classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            errorMsg.classList.add('hidden');
+
+            try {
+                // Hacemos la petición Fetch a Formspree
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Si el envío fue exitoso, ocultamos form y mostramos mensaje
+                    const formContainer = document.getElementById('form-container');
+                    const successMessage = document.getElementById('success-message');
+                    
+                    formContainer.style.opacity = '0';
+                    formContainer.style.transform = 'translateY(20px)';
+                    formContainer.style.transition = 'all 0.4s ease';
+                    
+                    setTimeout(() => {
+                        formContainer.classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                        successMessage.classList.add('flex', 'flex-col');
+                    }, 400);
+
+                    form.reset(); // Limpiamos el formulario
+                } else {
+                    // Si Formspree devuelve un error
+                    throw new Error('Error en la respuesta del servidor');
+                }
+            } catch (error) {
+                // Manejo de errores (sin usar alert)
+                errorMsg.classList.remove('hidden');
+                btnText.innerText = originalText;
+                btnIcon.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body>
+</html>
